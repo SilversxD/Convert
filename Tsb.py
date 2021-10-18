@@ -4,9 +4,10 @@ from tkinter.ttk import Combobox, Checkbutton,Radiobutton,Notebook, Frame
 import urllib.request
 from xml.dom.minidom import *
 from datetime import *
+import matplotlib
+import matplotlib.pyplot as plt
 
 def vvod(abc,d):
-   "Ввод данных"
    now=datetime.now()
    now=(now.strftime("%d/%m/%Y"))
    response = urllib.request.urlopen("http://www.cbr.ru/scripts/XML_daily.asp?date_req="+now)
@@ -39,7 +40,6 @@ def vvod(abc,d):
 
    
 def btn1_click():
-   "Кнопка конвертации"
    #d=label1.configure(text=entry1.get())
    h=float(entry1.get())
    
@@ -65,7 +65,6 @@ def btn1_click():
    label1.configure(text=end)
    
 def poisk():
-   "Парсинг сайта ЦБР"
    d=combo2.get()
    ar=False
    while(ar==False):
@@ -104,7 +103,6 @@ def poisk():
                 ab=child.childNodes[0].nodeValue
    
 def btn2_click():
-   "Кнопка Графика"
    poisk()
    matplotlib.use('TkAgg')
    fig = plt.figure()
@@ -119,7 +117,6 @@ def btn2_click():
    time()
 
 def time():
-   "Текущая дата"
    now=datetime.now()
    d=12
    i=0
